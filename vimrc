@@ -42,10 +42,8 @@ set hlsearch
 "Show number line on the left
  set number
  set history=100
- " Options to match the use with konsole
- autocmd BufReadPost * :silent !dcop $KONSOLE_DCOP_SESSION renameSession %
- autocmd VimLeavePre * :silent !dcop $KONSOLE_DCOP_SESSION renameSession $PWD
-
+"Set the size of the window at startup
+set lines=50 columns=100
  set showmatch
  autocmd BufWritePre * :%s/\s\+$//e
  set updatetime=100
@@ -53,8 +51,8 @@ set hlsearch
  :syntax enable
  filetype plugin indent on
  :set autoindent
- :colorscheme wombat256mod
- " When F5 is pressed, a list of opened buffers is shown, and we just need to type the number to go there.
+ " When F12 is pressed, a list of opened buffers is shown, and we just need to type the number to go there.
+:colorscheme wombat256mod
  :nnoremap <F12> :buffers<CR>:buffer<Space>
  " Highlight the line the cursor is on
 " Quickly switch between buffers with CTRL+b
@@ -75,7 +73,7 @@ setglobal spell spelllang=en_gb
 " By default spelling is off...
 set nospell
 " ...but enable it for the English text files I use a lot.
-au BufRead,BufNewFile,BufWrite *.txt,*.tex,*.latex set spell
+au BufRead,BufNewFile,BufWrite txt,tex,latex set spell
 let vimrc_already_sourced = 1
 
 "Don't use TABs but spaces
@@ -86,7 +84,8 @@ set shiftround
 set expandtab
 
 " Setup Pathogen to manage my plugins
-"call pathogen#infect()
+call pathogen#infect()
 
 " Set the font globally
 set guifont=DejaVu\ Sans\ Mono\ Bold\ 11
+
